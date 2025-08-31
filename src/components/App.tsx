@@ -1,5 +1,7 @@
+import Diagram from "../features/diagram/components/Diagram";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline"> Hello world!</h1>;
+  return <Diagram />;
 }
 
 export default App;
