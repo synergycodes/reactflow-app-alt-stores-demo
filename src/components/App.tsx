@@ -1,7 +1,7 @@
-import Diagram from "../features/diagram/components/Diagram";
+import Flow from "@/features/diagram-1-default/components/Flow";
 
 function App() {
-  return <Diagram />;
+  return <Flow />;
 }
 
 export default App;
