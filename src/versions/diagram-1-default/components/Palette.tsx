@@ -2,9 +2,9 @@ import type { SupportedNodeTypes } from "@ts";
 import { cn } from "@/utils/cn";
 import { PALETTE_NODES_TYPES } from "@/consts/init";
 import IconByNodeType from "@/components/icons/IconByNodeType";
-import { useDragAndDropContext } from "../contexts/dragAndDrop/useDragAndDropContext";
+import { useDragAndDropContext } from "@/versions/diagram-1-default/contexts/dragAndDrop/hooks/useDragAndDropContext";
 
-export default function Palette() {
+const Palette = () => {
   const { setDraggedType } = useDragAndDropContext();
 
   const onDragStart = (
@@ -19,13 +19,13 @@ export default function Palette() {
     <aside className="fixed left-0 top-0 z-10">
       <div
         className={cn(
-          "flex flex-col gap-3",
-          "bg-white w-[300px] h-screen",
-          "border-r border-zinc-50 p-4"
+          "flex flex-col gap-3 p-4",
+          "bg-white w-[300px]",
+          "border-r border-zinc-50 rounded-br-xl shadow-md"
         )}
       >
-        <div className="text-sm text-zinc-500 mb-5">
-          You can drag these nodes to the pane on the right.
+        <div className="p-4 text-sm text-center text-zinc-500 mb-5 tracking-wider">
+          You can <strong className="text-zinc-800 tracking-widest">drag</strong> these nodes.
         </div>
         {PALETTE_NODES_TYPES.map((type) => (
           <div
@@ -33,8 +33,9 @@ export default function Palette() {
             className={cn(
               "flex gap-3 align-middle justify-between",
               "rounded-xl py-2 px-4",
-              "text-gray-500 font-semibold bg-white",
-              "border border-zinc-50 shadow"
+              "text-gray-500 hover:text-gray-700 font-semibold bg-white",
+              "border border-zinc-50 shadow",
+              "cursor-pointer"
             )}
             onDragStart={(event) => onDragStart(event, type)}
             draggable
@@ -46,4 +47,6 @@ export default function Palette() {
       </div>
     </aside>
   );
-}
+};
+
+export default Palette;
