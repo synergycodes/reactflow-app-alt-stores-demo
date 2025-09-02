@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+button {
+  /* At this point, it’s a joke that this isn’t the default. */
+  cursor: pointer;
+}

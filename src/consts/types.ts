@@ -1,1 +1,1 @@
-export type SupportedNodeTypes = "example";
+export type SupportedNodeTypes = "cat" | "dog" | "pig" | "wolf";

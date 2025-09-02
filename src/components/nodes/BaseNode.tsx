@@ -10,7 +10,7 @@ type Props = NodeProps<Node>;
 
 const handleTopPosition = 25;
 
-const ExampleNode = ({ id, isConnectable, selected }: Props) => {
+const ExampleNode = ({ id, type, isConnectable, selected }: Props) => {
   return (
     <NodePanel className="" isSelected={selected}>
       <Handle
@@ -23,10 +23,10 @@ const ExampleNode = ({ id, isConnectable, selected }: Props) => {
         isConnectable={isConnectable}
       />
       <NodeTitle>
-        <IconByNodeType type="example" className="size-6" />
-        <span>Id: {id}</span>
+        <IconByNodeType type={type} className="size-6" />
+        <span className="capitalize">{type} node</span>
       </NodeTitle>
-      <p className="text-sm text-zinc-500">Example node.</p>
+      <p className="text-right text-[8px] text-zinc-400 rounded-sm tracking-wider">id: {id}</p>
       <Handle
         style={{
           ...defaultHandleStyles,
