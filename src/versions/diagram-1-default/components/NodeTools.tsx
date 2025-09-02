@@ -8,7 +8,8 @@ const NodeTools = () => {
         className={cn(
           "flex flex-col gap-3",
           "bg-white rounded-xl",
-          "border-r border-zinc-50 p-4 shadow-md"
+          "border-r border-zinc-50 p-4 shadow-md",
+          "translate-y-0 empty:translate-y-100 duration-300"
         )}
       >
         <ConnectButton />

@@ -1,15 +1,17 @@
 import { useGetSelectedNodeId } from "@/components/hooks/useGetSelectedNodeId";
 import IconEdgeStart from "@/components/icons/IconEdgeStart";
 import Button from "@/components/ui/Button";
-import { useCallback, useMemo, type PropsWithChildren } from "react";
+import { useCallback, useMemo } from "react";
 import { useConnectionMarkerContext } from "../hooks/useConnectionMarkerContext";
 import IconEdgeEnd from "@/components/icons/IconEdgeEnd";
+import { addEdge, useReactFlow, type Edge } from "@xyflow/react";
 
 type Props = {
   className?: string;
 };
 
 const ConnectButton = ({ className }: Props) => {
+  const { setEdges } = useReactFlow();
   const selectedNodeId = useGetSelectedNodeId();
   const { sourceNodeId, setSourceNodeId } = useConnectionMarkerContext();
 
@@ -19,12 +21,15 @@ const ConnectButton = ({ className }: Props) => {
         return "removeSource";
       }
 
-      return "setTarget";
+      if (selectedNodeId) {
+        return "setTarget";
+      }
+
+      return "removeSource";
     }
 
     return "setSource";
   }, [selectedNodeId, sourceNodeId]);
-
 
   const handleClick = useCallback(() => {
     if (type === "setSource") {
@@ -38,9 +43,21 @@ const ConnectButton = ({ className }: Props) => {
 
       return;
     }
-  }, [type, selectedNodeId, setSourceNodeId]);
 
-  if (!selectedNodeId) {
+    if (sourceNodeId && selectedNodeId) {
+      const newEdge: Edge = {
+        id: crypto.randomUUID(),
+        source: sourceNodeId,
+        target: selectedNodeId,
+      };
+
+      setEdges((edges) => addEdge<Edge>(newEdge, edges));
+
+      setSourceNodeId(null);
+    }
+  }, [type, sourceNodeId, selectedNodeId, setSourceNodeId, setEdges]);
+
+  if (!selectedNodeId && !sourceNodeId) {
     return null;
   }
 
