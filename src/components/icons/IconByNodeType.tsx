@@ -1,19 +1,25 @@
 import type { SupportedNodeTypes } from "@ts";
 
-import IconBulb from "./IconBulb";
+import IconDog from "./IconDog";
+import IconCat from "./IconCat";
+import IconPig from "./IconPig";
+import IconWolf from "./IconWolf";
 
 const iconByType: Record<
   SupportedNodeTypes,
   ({ className }: Props) => React.JSX.Element
 > = {
-  example: IconBulb,
+  cat: IconCat,
+  dog: IconDog,
+  pig: IconPig,
+  wolf: IconWolf,
 };
 
 const supportedTypes = Object.keys(iconByType);
 
 type Props = {
   className?: string;
-  type: SupportedNodeTypes;
+  type?: string;
 };
 
 const Icon = ({ className, type }: Props) => {

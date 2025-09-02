@@ -1,14 +1,14 @@
 import { ReactFlowProvider } from "@xyflow/react";
-import { DragAndDropContextProvider } from "../contexts/dragAndDrop/provider";
+import { DragAndDropProvider } from "../contexts/dragAndDrop/provider";
 import Diagram from "./Diagram";
 import Palette from "./Palette";
 
 const Flow = () => (
   <ReactFlowProvider>
-    <DragAndDropContextProvider>
+    <DragAndDropProvider>
       <Diagram />
       <Palette />
-    </DragAndDropContextProvider>
+    </DragAndDropProvider>
   </ReactFlowProvider>
 );
 

@@ -20,7 +20,7 @@ export const Diagram = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>(initialEdges);
   const { screenToFlowPosition } = useReactFlow();
-  const [type, setType] = useDragAndDropContext();
+  const { draggedType, setDraggedType } = useDragAndDropContext();
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((edges) => addEdge(params, edges)),
@@ -36,8 +36,7 @@ export const Diagram = () => {
     (event: React.DragEvent<HTMLDivElement>) => {
       event.preventDefault();
 
-      // check if the dropped element is valid
-      if (!type) {
+      if (!draggedType) {
         return;
       }
 
@@ -45,16 +44,19 @@ export const Diagram = () => {
         x: event.clientX,
         y: event.clientY,
       });
+
       const newNode = {
-        id: generateId(),
-        type,
+        id: generateId(draggedType),
+        type: draggedType,
         position,
-        data: { label: `${type} node` },
+        data: {},
       };
+
+      setDraggedType(null);
 
       setNodes((nds) => nds.concat(newNode));
     },
-    [screenToFlowPosition, setNodes, type]
+    [screenToFlowPosition, setNodes, draggedType]
   );
 
   return (

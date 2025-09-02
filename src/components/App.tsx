@@ -1,4 +1,4 @@
-import Flow from "@/features/diagram-1-default/components/Flow";
+import Flow from "@/versions/diagram-1-default/components/Flow";
 
 function App() {
   return <Flow />;
