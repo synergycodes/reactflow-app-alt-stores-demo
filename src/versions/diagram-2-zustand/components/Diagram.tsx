@@ -24,11 +24,6 @@ export const Diagram = () => {
   const { screenToFlowPosition } = useReactFlow();
   const { draggedType, setDraggedType } = useDragAndDropContext();
 
-  // const onConnect = useCallback(
-  //   (params: Connection) => setEdges((edges) => addEdge(params, edges)),
-  //   [setEdges]
-  // );
-
   const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
