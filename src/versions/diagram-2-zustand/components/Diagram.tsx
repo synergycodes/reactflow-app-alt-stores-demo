@@ -1,32 +1,33 @@
-import {
-  addEdge,
-  ReactFlow,
-  useNodesState,
-  useEdgesState,
-  type Node,
-  type Edge,
-  type Connection,
-  Background,
-  useReactFlow,
-} from "@xyflow/react";
+import { ReactFlow, Background, useReactFlow } from "@xyflow/react";
 import { useCallback } from "react";
 import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/nodes";
-import { initialEdges, initialNodes } from "@/consts/init";
-import { useDragAndDropContext } from "../../shared/contexts/dragAndDrop/hooks/useDragAndDropContext";
+import { useDragAndDropContext } from "@/versions/shared/contexts/dragAndDrop/hooks/useDragAndDropContext";
 import { generateId } from "@/utils/generateId";
 import RerenderCounter from "@/components/dev/RerenderCounter";
+import { useShallow } from "zustand/shallow";
+import useGlobalStore, { type GlobalStoreState } from "../stores/global";
+
+const selector = (state: GlobalStoreState) => ({
+  nodes: state.nodes,
+  edges: state.edges,
+  addNode: state.addNode,
+  onNodesChange: state.onNodesChange,
+  onEdgesChange: state.onEdgesChange,
+  onConnect: state.onConnect,
+});
 
 export const Diagram = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>(initialEdges);
+  const { nodes, edges, addNode, onNodesChange, onEdgesChange, onConnect } =
+    useGlobalStore(useShallow(selector));
+
   const { screenToFlowPosition } = useReactFlow();
   const { draggedType, setDraggedType } = useDragAndDropContext();
 
-  const onConnect = useCallback(
-    (params: Connection) => setEdges((edges) => addEdge(params, edges)),
-    [setEdges]
-  );
+  // const onConnect = useCallback(
+  //   (params: Connection) => setEdges((edges) => addEdge(params, edges)),
+  //   [setEdges]
+  // );
 
   const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -55,9 +56,9 @@ export const Diagram = () => {
 
       setDraggedType(null);
 
-      setNodes((nds) => nds.concat(newNode));
+      addNode(newNode);
     },
-    [draggedType, screenToFlowPosition, setDraggedType, setNodes]
+    [draggedType, screenToFlowPosition, setDraggedType, addNode]
   );
 
   return (
