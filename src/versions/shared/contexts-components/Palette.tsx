@@ -25,7 +25,9 @@ const Palette = () => {
         )}
       >
         <div className="p-4 text-sm text-center text-zinc-500 mb-5 tracking-wider">
-          You can <strong className="text-zinc-800 tracking-widest">drag</strong> these nodes.
+          You can{" "}
+          <strong className="text-zinc-800 tracking-widest">drag</strong> these
+          nodes.
         </div>
         {PALETTE_NODES_TYPES.map((type) => (
           <div

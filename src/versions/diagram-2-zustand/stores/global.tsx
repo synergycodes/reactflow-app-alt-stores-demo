@@ -12,7 +12,7 @@ import {
 
 import { initialEdges, initialNodes } from "@/consts/init";
 
-export type AppState = {
+export type GlobalStoreState = {
   nodes: Node[];
   edges: Edge[];
   onNodesChange: OnNodesChange;
@@ -23,7 +23,7 @@ export type AppState = {
   setEdges: (edges: Edge[]) => void;
 };
 
-const useGlobalStore = create<AppState>((set, get) => ({
+const useGlobalStore = create<GlobalStoreState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
   onNodesChange: (changes) => {
