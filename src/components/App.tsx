@@ -1,7 +1,12 @@
 import { Link, Route, Switch } from "wouter";
+
+import { cn } from "@/utils/cn";
+
 import Flow1 from "@/versions/diagram-1-default/components/Flow";
 import Flow2 from "@/versions/diagram-2-zustand/components/Flow";
 import Flow3 from "@/versions/diagram-3-zustand-actions/components/Flow";
+
+import IconVersions from "./icons/IconVersions";
 
 function App() {
   return (
@@ -12,7 +17,15 @@ function App() {
       <Route>
         <div className="h-screen flex flex-col justify-center">
           <main className="text-center w-[300px] mx-auto max-w-screen">
-            <h1 className="text-zinc-500 text-2xl mb-2">Flows</h1>
+            <h1
+              className={cn(
+                "flex items-center gap-2",
+                "text-zinc-500 text-2xl mb-4"
+              )}
+            >
+              <IconVersions className="size-8" />
+              <span>Versions</span>
+            </h1>
             <nav className="text-left">
               <ul>
                 <li>
@@ -22,7 +35,9 @@ function App() {
                   <Link href="/diagram-2-zustand">2. Zustand store</Link>
                 </li>
                 <li>
-                  <Link href="/diagram-3-zustand-actions">3. Zustand store with actions</Link>
+                  <Link href="/diagram-3-zustand-actions">
+                    3. Zustand store with actions
+                  </Link>
                 </li>
               </ul>
             </nav>

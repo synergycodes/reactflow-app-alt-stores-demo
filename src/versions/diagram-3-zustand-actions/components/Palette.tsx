@@ -1,7 +1,9 @@
+import { Link } from "wouter";
 import type { SupportedNodeTypes } from "@ts";
 import { cn } from "@/utils/cn";
 import { PALETTE_NODES_TYPES } from "@/consts/init";
 import IconByNodeType from "@/components/icons/IconByNodeType";
+import IconVersions from "@/components/icons/IconVersions";
 import { setDraggedType } from "../features/dragAndDrop/stores/useDragAndDropStore";
 
 const Palette = () => {
@@ -45,6 +47,17 @@ const Palette = () => {
             <span className="capitalize">{type} node</span>
           </div>
         ))}
+        <Link
+          to="/"
+          className={cn(
+            "mt-5",
+            "inline-flex gap-1 justify-center items-center",
+            "tracking-wider hover:text-lime-700 duration-100"
+          )}
+        >
+          <IconVersions className="size-6" />
+          <span className="leading-none text-sm">Change version</span>
+        </Link>
       </div>
     </aside>
   );
