@@ -7,58 +7,24 @@ import {
   type Edge,
   type Connection,
   Background,
-  useReactFlow,
 } from "@xyflow/react";
 import { useCallback } from "react";
 import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/nodes";
 import { initialEdges, initialNodes } from "@/consts/init";
-import { useDragAndDropContext } from "../../shared/contexts/dragAndDrop/hooks/useDragAndDropContext";
-import { generateId } from "@/utils/generateId";
 import RerenderCounter from "@/components/dev/RerenderCounter";
+import { useOnDragEvents } from "../hooks/useOnDragEvents";
 
 export const Diagram = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>(initialEdges);
-  const { screenToFlowPosition } = useReactFlow();
-  const { draggedType, setDraggedType } = useDragAndDropContext();
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((edges) => addEdge(params, edges)),
     [setEdges]
   );
 
-  const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "move";
-  }, []);
-
-  const onDrop = useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
-      event.preventDefault();
-
-      if (!draggedType) {
-        return;
-      }
-
-      const position = screenToFlowPosition({
-        x: event.clientX,
-        y: event.clientY,
-      });
-
-      const newNode = {
-        id: generateId(draggedType),
-        type: draggedType,
-        position,
-        data: {},
-      };
-
-      setDraggedType(null);
-
-      setNodes((nds) => nds.concat(newNode));
-    },
-    [draggedType, screenToFlowPosition, setDraggedType, setNodes]
-  );
+  const { onDragOver, onDrop } = useOnDragEvents({ setNodes });
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
