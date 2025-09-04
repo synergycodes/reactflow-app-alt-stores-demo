@@ -1,12 +1,14 @@
 import { Link, Route, Switch } from "wouter";
 import Flow1 from "@/versions/diagram-1-default/components/Flow";
 import Flow2 from "@/versions/diagram-2-zustand/components/Flow";
+import Flow3 from "@/versions/diagram-3-zustand-actions/components/Flow";
 
 function App() {
   return (
     <Switch>
       <Route path="/diagram-1-default" component={Flow1} />
       <Route path="/diagram-2-zustand" component={Flow2} />
+      <Route path="/diagram-3-zustand-actions" component={Flow3} />
       <Route>
         <div className="h-screen flex flex-col justify-center">
           <main className="text-center w-[300px] mx-auto max-w-screen">
@@ -18,6 +20,9 @@ function App() {
                 </li>
                 <li>
                   <Link href="/diagram-2-zustand">2. Zustand store</Link>
+                </li>
+                <li>
+                  <Link href="/diagram-3-zustand-actions">3. Zustand store with actions</Link>
                 </li>
               </ul>
             </nav>
