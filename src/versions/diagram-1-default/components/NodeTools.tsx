@@ -1,5 +1,5 @@
 import { cn } from "@/utils/cn";
-import ConnectButton from "@/versions/shared/contexts-features/connectionMaker/components/ConnectButton";
+import ConnectButton from "../features/connectionMaker/components/ConnectButton";
 
 const NodeTools = () => {
   return (

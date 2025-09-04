@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { useReactFlow, type Node } from "@xyflow/react";
 import { generateId } from "@/utils/generateId";
-import { useDragAndDropContext } from "@/versions/shared/contexts-features/dragAndDrop/hooks/useDragAndDropContext";
 import { useShallow } from "zustand/shallow";
 import useGlobalStore, {
   type GlobalStoreState,
 } from "../stores/useGlobalStore";
+import { useDragAndDropContext } from "../features/dragAndDrop/hooks/useDragAndDropContext";
 
 const selector = (state: GlobalStoreState) => ({
   addNode: state.addNode,

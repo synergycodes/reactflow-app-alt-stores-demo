@@ -8,20 +8,20 @@ export type DragAndDropStoreState = {
   draggedType: SupportedNodeTypes | null;
 };
 
-const useDragAndDropState = create<DragAndDropStoreState>(() => ({
+const useDragAndDropStore = create<DragAndDropStoreState>(() => ({
   draggedType: null,
 }));
 
 export const setDraggedType = (
   draggedType: DragAndDropStoreState["draggedType"]
 ) => {
-  useDragAndDropState.setState({
+  useDragAndDropStore.setState({
     draggedType,
   });
 };
 
 export const addNodeOnDropIfDragged = (position: XYPosition) => {
-  const draggedType = useDragAndDropState.getState().draggedType;
+  const draggedType = useDragAndDropStore.getState().draggedType;
 
   if (!draggedType) {
     return;
@@ -36,9 +36,9 @@ export const addNodeOnDropIfDragged = (position: XYPosition) => {
 
   addNode(newNode);
 
-  useDragAndDropState.setState({
+  useDragAndDropStore.setState({
     draggedType: null,
   });
 };
 
-export default useDragAndDropState;
+export default useDragAndDropStore;

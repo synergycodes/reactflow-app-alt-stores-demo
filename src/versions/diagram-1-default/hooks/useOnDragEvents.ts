@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useReactFlow, type Node } from "@xyflow/react";
 import { generateId } from "@/utils/generateId";
-import { useDragAndDropContext } from "@/versions/shared/contexts-features/dragAndDrop/hooks/useDragAndDropContext";
+import { useDragAndDropContext } from "../features/dragAndDrop/hooks/useDragAndDropContext";
 
 type Params = {
   setNodes: React.Dispatch<React.SetStateAction<Node[]>>;

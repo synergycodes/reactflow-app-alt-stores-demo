@@ -1,18 +1,14 @@
 import { ReactFlowProvider } from "@xyflow/react";
 
-import { ConnectionMakerProvider } from "@/versions/shared/contexts-features/connectionMaker/provider";
-import NodeTools from "@/versions/shared/contexts-components/NodeTools";
-
 import Diagram from "./Diagram";
 import Palette from "./Palette";
+import NodeTools from "./NodeTools";
 
 const Flow = () => (
   <ReactFlowProvider>
-    <ConnectionMakerProvider>
-      <Diagram />
-      <Palette />
-      <NodeTools />
-    </ConnectionMakerProvider>
+    <Diagram />
+    <Palette />
+    <NodeTools />
   </ReactFlowProvider>
 );
 

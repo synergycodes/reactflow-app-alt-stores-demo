@@ -2,7 +2,7 @@ import type { SupportedNodeTypes } from "@ts";
 import { cn } from "@/utils/cn";
 import { PALETTE_NODES_TYPES } from "@/consts/init";
 import IconByNodeType from "@/components/icons/IconByNodeType";
-import { useDragAndDropContext } from "@/versions/shared/contexts-features/dragAndDrop/hooks/useDragAndDropContext";
+import { useDragAndDropContext } from "../features/dragAndDrop/hooks/useDragAndDropContext";
 
 const Palette = () => {
   const { setDraggedType } = useDragAndDropContext();
