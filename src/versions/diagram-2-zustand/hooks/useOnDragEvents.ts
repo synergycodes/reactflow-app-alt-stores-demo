@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useReactFlow } from "@xyflow/react";
 import { generateId } from "@/utils/generateId";
-import { useDragAndDropContext } from "@/versions/shared/contexts/dragAndDrop/hooks/useDragAndDropContext";
+import { useDragAndDropContext } from "@/versions/shared/contexts-features/dragAndDrop/hooks/useDragAndDropContext";
 import { useShallow } from "zustand/shallow";
 import useGlobalStore, { type GlobalStoreState } from "../stores/global";
 
