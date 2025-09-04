@@ -1,6 +1,8 @@
 import { memo } from "react";
 import { Handle, Position, type Node, type NodeProps } from "@xyflow/react";
 
+import { cn } from "@/utils/cn";
+
 import NodePanel from "./parts/NodePanel";
 import NodeTitle from "./parts/NodeTitle";
 import { defaultHandleStyles } from "./consts";
@@ -23,10 +25,17 @@ const ExampleNode = ({ id, type, isConnectable, selected }: Props) => {
         isConnectable={isConnectable}
       />
       <NodeTitle>
-        <IconByNodeType type={type} className="size-6" />
+        <IconByNodeType
+          type={type}
+          className={cn("size-6 duration-200", {
+            "text-lime-800": selected,
+          })}
+        />
         <span className="capitalize">{type} node</span>
       </NodeTitle>
-      <p className="text-right text-[8px] text-zinc-400 rounded-sm tracking-wider">id: {id}</p>
+      <p className="text-right text-[8px] text-zinc-400 rounded-sm tracking-wider">
+        id: {id}
+      </p>
       <Handle
         style={{
           ...defaultHandleStyles,

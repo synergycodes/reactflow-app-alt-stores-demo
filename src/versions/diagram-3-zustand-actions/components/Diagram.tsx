@@ -1,22 +1,23 @@
 import { ReactFlow, Background } from "@xyflow/react";
+import { useShallow } from "zustand/shallow";
 import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/nodes";
 import RerenderCounter from "@/components/dev/RerenderCounter";
-import { useShallow } from "zustand/shallow";
-import useGlobalStore, { type GlobalStoreState } from "../stores/useGlobalStore";
+import useGlobalStore, {
+  onConnect,
+  onEdgesChange,
+  onNodesChange,
+  type GlobalStoreState,
+} from "../stores/useGlobalStore";
 import { useOnDragEvents } from "../hooks/useOnDragEvents";
 
 const selector = (state: GlobalStoreState) => ({
   nodes: state.nodes,
   edges: state.edges,
-  onNodesChange: state.onNodesChange,
-  onEdgesChange: state.onEdgesChange,
-  onConnect: state.onConnect,
 });
 
 export const Diagram = () => {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } =
-    useGlobalStore(useShallow(selector));
+  const { nodes, edges } = useGlobalStore(useShallow(selector));
 
   const { onDragOver, onDrop } = useOnDragEvents();
 
@@ -33,7 +34,7 @@ export const Diagram = () => {
         onDragOver={onDragOver}
         fitView
       >
-        <Background color="#b9bfca" size={2} gap={30} />
+        <Background color="#b9bfca" size={2} gap={35} />
         <RerenderCounter />
       </ReactFlow>
     </div>

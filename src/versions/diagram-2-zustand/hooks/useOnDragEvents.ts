@@ -1,9 +1,11 @@
 import { useCallback } from "react";
-import { useReactFlow } from "@xyflow/react";
+import { useReactFlow, type Node } from "@xyflow/react";
 import { generateId } from "@/utils/generateId";
-import { useDragAndDropContext } from "@/versions/shared/contexts-features/dragAndDrop/hooks/useDragAndDropContext";
 import { useShallow } from "zustand/shallow";
-import useGlobalStore, { type GlobalStoreState } from "../stores/global";
+import useGlobalStore, {
+  type GlobalStoreState,
+} from "../stores/useGlobalStore";
+import { useDragAndDropContext } from "../features/dragAndDrop/hooks/useDragAndDropContext";
 
 const selector = (state: GlobalStoreState) => ({
   addNode: state.addNode,
@@ -32,7 +34,7 @@ export const useOnDragEvents = () => {
         y: event.clientY,
       });
 
-      const newNode = {
+      const newNode: Node = {
         id: generateId(draggedType),
         type: draggedType,
         position,

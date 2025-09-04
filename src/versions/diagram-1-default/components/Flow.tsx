@@ -1,11 +1,11 @@
 import { ReactFlowProvider } from "@xyflow/react";
 
-import { DragAndDropProvider } from "@/versions/shared/contexts-features/dragAndDrop/provider";
-import { ConnectionMakerProvider } from "@/versions/shared/contexts-features/connectionMaker/provider";
-import Palette from "@/versions/shared/contexts-components/Palette";
-import NodeTools from "@/versions/shared/contexts-components/NodeTools";
+import { ConnectionMakerProvider } from "../features/connectionMaker/provider";
+import { DragAndDropProvider } from "../features/dragAndDrop/provider";
 
 import Diagram from "./Diagram";
+import Palette from "./Palette";
+import NodeTools from "./NodeTools";
 
 const Flow = () => (
   <ReactFlowProvider>
