@@ -14,7 +14,7 @@ const itemClassName = cn(
 );
 
 const itemClassNameUnelected = "opacity-0 scale-0";
-const itemClassNameSelected = "opacity-100 scale-100";
+const itemClassNameSelected = "opacity-100 scale-200";
 
 const items = [
   "-translate-x-[30px] -translate-y-[90px]",
@@ -61,7 +61,7 @@ const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
             [itemClassNameSelected]: selected,
             [item]: selected,
             "!opacity-0": indexesToHide.includes(index),
-            "text-[13px]": largerIndex === index,
+            "text-[13px] text-lime-500": largerIndex === index,
           })}
           style={{
             transitionDelay: `${index * 30}ms`,

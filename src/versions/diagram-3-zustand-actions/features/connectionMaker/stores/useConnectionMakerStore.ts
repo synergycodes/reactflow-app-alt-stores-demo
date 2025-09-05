@@ -1,19 +1,53 @@
+import type { Edge } from "@xyflow/react";
 import { create } from "zustand";
+import { onConnect } from "@/versions/diagram-3-zustand-actions/stores/useGlobalStore";
+import type { ConnectionMakerStatus } from "../types";
 
 export type ConnectionMakerStoreState = {
+  status: ConnectionMakerStatus;
   sourceNodeId: string | null;
 };
 
-const useConnectionMakerStore = create<ConnectionMakerStoreState>(() => ({
+const initialState: ConnectionMakerStoreState = {
+  status: "setSource",
   sourceNodeId: null,
-}));
+};
 
-export const setSourceNodeId = (
-  sourceNodeId: ConnectionMakerStoreState["sourceNodeId"]
-) => {
+const useConnectionMakerStore = create<ConnectionMakerStoreState>(
+  () => initialState
+);
+
+export const cancelLinking = () => {
+  useConnectionMakerStore.setState(initialState);
+};
+
+export const setSourceNodeId = (sourceNodeId: string | null) => {
+  if (!sourceNodeId) {
+    cancelLinking();
+
+    return;
+  }
+
   useConnectionMakerStore.setState({
+    status: "setTarget",
     sourceNodeId,
   });
+};
+
+export const setTargetNodeId = (targetNodeId: string | null) => {
+  const sourceNodeId = useConnectionMakerStore.getState().sourceNodeId;
+
+  if (sourceNodeId && targetNodeId) {
+    const newEdge: Edge = {
+      id: crypto.randomUUID(),
+      source: sourceNodeId,
+      target: targetNodeId,
+    };
+
+    onConnect(newEdge);
+
+    setSourceNodeId(null);
+  }
 };
 
 export default useConnectionMakerStore;

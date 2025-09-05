@@ -34,7 +34,7 @@ export const onEdgesChange = (changes: EdgeChange<Edge>[]) => {
   }));
 };
 
-export const onConnect = (connection: Connection) => {
+export const onConnect = (connection: Connection | Edge) => {
   useGlobalStore.setState((state) => ({
     edges: addEdge(connection, state.edges),
   }));
