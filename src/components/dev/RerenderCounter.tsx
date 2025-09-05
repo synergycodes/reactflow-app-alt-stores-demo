@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import "@xyflow/react/dist/style.css";
 
 import { cn } from "@/utils/cn";
 import IconRerender from "@/components/icons/IconRerender";

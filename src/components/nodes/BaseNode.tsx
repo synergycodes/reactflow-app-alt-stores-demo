@@ -7,10 +7,21 @@ import NodePanel from "./parts/NodePanel";
 import NodeTitle from "./parts/NodeTitle";
 import { defaultHandleStyles } from "./consts";
 import IconByNodeType from "../icons/IconByNodeType";
+import NodeExplosion from "./parts/NodeExplode";
+import type { SupportedNodeTypes } from "@ts";
 
 type Props = NodeProps<Node>;
 
 const handleTopPosition = 25;
+
+const animationText: {
+  [type in SupportedNodeTypes]: string;
+} = {
+  cat: "MEOW!",
+  dog: "BARK!",
+  pig: "OINK!",
+  wolf: "AWOOOO!",
+} as const;
 
 const ExampleNode = ({ id, type, isConnectable, selected }: Props) => {
   return (
@@ -45,6 +56,9 @@ const ExampleNode = ({ id, type, isConnectable, selected }: Props) => {
         position={Position.Right}
         isConnectable={isConnectable}
       />
+      <NodeExplosion selected={selected}>
+        {animationText[type as SupportedNodeTypes] || ""}
+      </NodeExplosion>
     </NodePanel>
   );
 };

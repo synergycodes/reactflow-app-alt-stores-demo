@@ -1,5 +1,4 @@
 import { ReactFlow, Background } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/nodes";
 import RerenderCounter from "@/components/dev/RerenderCounter";
 import { useShallow } from "zustand/shallow";

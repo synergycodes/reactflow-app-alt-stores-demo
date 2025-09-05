@@ -9,7 +9,6 @@ import {
   Background,
 } from "@xyflow/react";
 import { useCallback } from "react";
-import "@xyflow/react/dist/style.css";
 import { nodeTypes } from "@/components/nodes";
 import { initialEdges, initialNodes } from "@/consts/init";
 import RerenderCounter from "@/components/dev/RerenderCounter";

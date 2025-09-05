@@ -4,3 +4,8 @@ button {
   /* At this point, it’s a joke that this isn’t the default. */
   cursor: pointer;
 }
+
+.react-flow .react-flow__handle:hover {
+  border-color: var(--color-lime-600) !important;
+  background-color: var(--color-lime-100) !important;
+}
