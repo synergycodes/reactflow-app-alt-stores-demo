@@ -67,7 +67,7 @@ const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
             [itemClassNameSelected]: selected,
             [item]: selected,
             "!opacity-0": indexesToHide.includes(index),
-            "text-[5px] text-gray-700": smallerIndex === index,
+            "text-[5px] text-black": smallerIndex === index,
             "text-[11px] text-rose-500": largerIndex === index,
           })}
           style={{

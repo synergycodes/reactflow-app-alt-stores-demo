@@ -1,6 +1,6 @@
 import type { Edge } from "@xyflow/react";
 import { create } from "zustand";
-import { onConnect } from "@/versions/diagram-3-zustand-actions/stores/useGlobalStore";
+import { onConnect } from "@/versions/diagram-4-zustand-actions/stores/useGlobalStore";
 import type { ConnectionMakerStatus } from "../types";
 
 export type ConnectionMakerStoreState = {

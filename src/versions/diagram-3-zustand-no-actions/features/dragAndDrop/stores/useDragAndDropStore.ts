@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { type Node, type XYPosition } from "@xyflow/react";
 import type { SupportedNodeTypes } from "@ts";
 import { generateId } from "@/utils/generateId";
-import { addNode } from "@/versions/diagram-3-zustand-actions/stores/useGlobalStore";
+import { addNode } from "@/versions/diagram-4-zustand-actions/stores/useGlobalStore";
 
 export type DragAndDropStoreState = {
   draggedType: SupportedNodeTypes | null;
