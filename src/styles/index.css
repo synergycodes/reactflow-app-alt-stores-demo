@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-comic {
+  font-family: "Sour Gummy", sans-serif;
+}
+
 button {
   /* At this point, it’s a joke that this isn’t the default. */
   cursor: pointer;

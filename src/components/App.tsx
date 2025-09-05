@@ -16,7 +16,7 @@ function App() {
       <Route path="/diagram-3-zustand-actions" component={Flow3} />
       <Route>
         <div className="h-screen flex flex-col justify-center">
-          <main className="text-center w-[300px] mx-auto max-w-screen">
+          <main className="text-center w-[500px] mx-auto max-w-screen">
             <h1
               className={cn(
                 "flex items-center gap-2",
@@ -30,6 +30,10 @@ function App() {
               <ul>
                 <li>
                   <Link href="/diagram-1-default">1. Default</Link>
+                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation without an external store,
+                    with drag-and-drop and custom edge creation implemented.
+                  </p>
                 </li>
                 <li>
                   <Link href="/diagram-2-zustand">2. Zustand store</Link>

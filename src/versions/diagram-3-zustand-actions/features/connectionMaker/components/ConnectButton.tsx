@@ -42,13 +42,17 @@ const ConnectButton = ({ className }: Props) => {
           onClick={() => setTargetNodeId(selectedNodeId)}
         >
           <IconEdgeEnd className="size-6" />
-          <span>Link to other node</span>
+          <span>Create a connection</span>
         </Button>
       );
     }
 
     return (
-      <Button className={className} onClick={cancelLinking}>
+      <Button
+        className={className}
+        onClick={cancelLinking}
+        variant="destructive"
+      >
         <IconEdgeStart className="size-6" />
         <span>Cancel linking</span>
       </Button>
