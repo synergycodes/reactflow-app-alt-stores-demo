@@ -14,9 +14,9 @@ type Props = {
 };
 
 const ConnectButton = ({ className }: Props) => {
+  const selectedNodeId = useGetSelectedNodeId();
   const status = useConnectionMakerStore((state) => state.status);
   const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
-  const selectedNodeId = useGetSelectedNodeId();
 
   if (status === "setSource") {
     return (
