@@ -1,8 +1,8 @@
 import { ReactFlowProvider } from "@xyflow/react";
 
 import Diagram from "./Diagram";
-import Palette from "./Palette";
 import NodeTools from "./NodeTools";
+import Palette from "../features/dragAndDrop/components/Palette";
 
 const Flow = () => (
   <ReactFlowProvider>

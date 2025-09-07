@@ -5,10 +5,10 @@ import { cn } from "@/utils/cn";
 import { PALETTE_NODES_TYPES } from "@/consts/init";
 import IconByNodeType from "@/components/icons/IconByNodeType";
 import IconVersions from "@/components/icons/IconVersions";
-import useDragAndDropStore from "../features/dragAndDrop/stores/useDragAndDropStore";
+import { useDragAndDropContext } from "../hooks/useDragAndDropContext";
 
 const Palette = () => {
-  const setDraggedType = useDragAndDropStore((state) => state.setDraggedType);
+  const { setDraggedType } = useDragAndDropContext();
 
   const onDragStart = useCallback(
     (event: React.DragEvent<HTMLDivElement>, nodeType: SupportedNodeTypes) => {

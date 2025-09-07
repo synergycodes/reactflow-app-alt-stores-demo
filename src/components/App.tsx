@@ -5,7 +5,7 @@ import { usePathname } from "wouter/use-browser-location";
 import { cn } from "@/utils/cn";
 
 import Flow1 from "@/versions/diagram-1-default/components/Flow";
-import Flow2 from "@/versions/diagram-2-zustand/components/Flow";
+import Flow2 from "@/versions/diagram-2-zustand-and-context/components/Flow";
 import Flow3 from "@/versions/diagram-3-zustand-no-actions/components/Flow";
 import Flow4 from "@/versions/diagram-4-zustand-actions/components/Flow";
 
@@ -25,7 +25,7 @@ function App() {
   return (
     <Switch>
       <Route path="/1-default" component={Flow1} />
-      <Route path="/2-zustand" component={Flow2} />
+      <Route path="/2-zustand-and-context" component={Flow2} />
       <Route path="/3-zustand-no-actions" component={Flow3} />
       <Route path="/4-zustand-actions" component={Flow4} />
       <Route>
@@ -60,7 +60,7 @@ function App() {
                 </li>
                 <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
-                    href="/2-zustand"
+                    href="/2-zustand-and-context"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
                     2. Zustand store and contexts
@@ -78,7 +78,7 @@ function App() {
                     href="/3-zustand-no-actions"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    3. Zustand stores without actions
+                    3. Zustand stores
                   </Link>
                   <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     ReactFlow implementation{" "}
