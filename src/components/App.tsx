@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, Route, Switch } from "wouter";
 import { usePathname } from "wouter/use-browser-location";
 
@@ -9,7 +10,6 @@ import Flow3 from "@/versions/diagram-3-zustand-no-actions/components/Flow";
 import Flow4 from "@/versions/diagram-4-zustand-actions/components/Flow";
 
 import IconVersions from "./icons/IconVersions";
-import { useEffect } from "react";
 
 function App() {
   const pathname = usePathname();
