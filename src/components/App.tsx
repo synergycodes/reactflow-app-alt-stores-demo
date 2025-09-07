@@ -42,57 +42,69 @@ function App() {
             </h1>
             <nav className="text-left">
               <ul className="flex flex-col gap-5">
-                <li>
+                <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
                     href="/1-default"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    1. Default
+                    1. Default - internal store
                   </Link>
-                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                  <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     Standard ReactFlow implementation{" "}
-                    <strong>without an external store</strong>, with
-                    drag-and-drop and custom edge creation implemented{" "}
-                    <strong>with contexts</strong>.
+                    <strong className="text-zinc-600">
+                      without an external store
+                    </strong>
+                    , with drag-and-drop and custom edge creation implemented{" "}
+                    <strong className="text-zinc-600">with contexts</strong>.
                   </p>
                 </li>
-                <li>
+                <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
                     href="/2-zustand"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    2. Zustand store
+                    2. Zustand store and contexts
                   </Link>
-                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                  <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     Default ReactFlow implementation{" "}
-                    <strong>with an external global store</strong>.
+                    <strong className="text-zinc-600">
+                      with an external global store
+                    </strong>
+                    .
                   </p>
                 </li>
-                <li>
+                <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
                     href="/3-zustand-no-actions"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    3. Zustand store without actions
+                    3. Zustand stores without actions
                   </Link>
-                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                  <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     ReactFlow implementation{" "}
-                    <strong>with multiple external stores</strong>,{" "}
-                    <strong>without contexts</strong>.
+                    <strong className="text-zinc-600">
+                      with multiple external stores
+                    </strong>
+                    ,{" "}
+                    <strong className="text-zinc-600">without contexts</strong>.
                   </p>
                 </li>
-                <li>
+                <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
                     href="/4-zustand-actions"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    4. Zustand store with actions
+                    4. Zustand stores with actions
                   </Link>
-                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                  <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     ReactFlow implementation{" "}
-                    <strong>with multiple external stores</strong>,{" "}
-                    <strong>without contexts</strong> utilising{" "}
-                    <strong>Zustand actions</strong>.
+                    <strong className="text-zinc-600">
+                      with multiple external stores
+                    </strong>
+                    ,{" "}
+                    <strong className="text-zinc-600">without contexts</strong>{" "}
+                    utilising{" "}
+                    <strong className="text-zinc-600">Zustand actions</strong>.
                   </p>
                 </li>
               </ul>
