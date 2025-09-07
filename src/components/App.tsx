@@ -30,47 +30,69 @@ function App() {
       <Route path="/4-zustand-actions" component={Flow4} />
       <Route>
         <div className="h-screen flex flex-col justify-center">
-          <main className="text-center w-[500px] mx-auto max-w-screen">
+          <main className="text-center w-[500px] py-4 mx-auto max-w-screen max-h-dvw overflow-auto">
             <h1
               className={cn(
-                "flex items-center gap-2",
-                "text-zinc-500 text-2xl mb-4"
+                "flex items-center gap-2 mb-8",
+                "text-zinc-500 text-2xl tracking-wider"
               )}
             >
-              <IconVersions className="size-8" />
-              <span>Versions</span>
+              <IconVersions className="size-8 text-lime-700" />
+              <span>Version picker</span>
             </h1>
             <nav className="text-left">
-              <ul>
+              <ul className="flex flex-col gap-5">
                 <li>
-                  <Link href="/1-default">1. Default</Link>
-                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
-                    Standard ReactFlow implementation without an external store,
-                    with drag-and-drop and custom edge creation implemented.
+                  <Link
+                    href="/1-default"
+                    className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
+                  >
+                    1. Default
+                  </Link>
+                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation{" "}
+                    <strong>without an external store</strong>, with
+                    drag-and-drop and custom edge creation implemented{" "}
+                    <strong>with contexts</strong>.
                   </p>
                 </li>
                 <li>
-                  <Link href="/2-zustand">2. Zustand store</Link>
-                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
-                    Standard ReactFlow implementation with one external store.
+                  <Link
+                    href="/2-zustand"
+                    className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
+                  >
+                    2. Zustand store
+                  </Link>
+                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                    Default ReactFlow implementation{" "}
+                    <strong>with an external global store</strong>.
                   </p>
                 </li>
                 <li>
-                  <Link href="/3-zustand-no-actions">
+                  <Link
+                    href="/3-zustand-no-actions"
+                    className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
+                  >
                     3. Zustand store without actions
                   </Link>
-                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
-                    Standard ReactFlow implementation with multiple external
-                    stores and zustand actions.
+                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                    ReactFlow implementation{" "}
+                    <strong>with multiple external stores</strong>,{" "}
+                    <strong>without contexts</strong>.
                   </p>
                 </li>
                 <li>
-                  <Link href="/4-zustand-actions">
+                  <Link
+                    href="/4-zustand-actions"
+                    className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
+                  >
                     4. Zustand store with actions
                   </Link>
-                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
-                    Standard ReactFlow implementation with multiple external
-                    stores and zustand actions.
+                  <p className="leading-6 text-sm text-zinc-500 px-10 py-5">
+                    ReactFlow implementation{" "}
+                    <strong>with multiple external stores</strong>,{" "}
+                    <strong>without contexts</strong> utilising{" "}
+                    <strong>Zustand actions</strong>.
                   </p>
                 </li>
               </ul>
