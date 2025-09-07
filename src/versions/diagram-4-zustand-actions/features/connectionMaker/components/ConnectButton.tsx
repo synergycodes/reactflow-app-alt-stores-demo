@@ -1,6 +1,4 @@
 import Button from "@/components/ui/Button";
-import { useCallback, useMemo } from "react";
-import { addEdge, useReactFlow, type Edge } from "@xyflow/react";
 
 import { useGetSelectedNodeId } from "@/components/hooks/useGetSelectedNodeId";
 import IconEdgeStart from "@/components/icons/IconEdgeStart";
@@ -16,9 +14,9 @@ type Props = {
 };
 
 const ConnectButton = ({ className }: Props) => {
-  const selectedNodeId = useGetSelectedNodeId();
   const status = useConnectionMakerStore((state) => state.status);
   const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
+  const selectedNodeId = useGetSelectedNodeId();
 
   if (status === "setSource") {
     return (

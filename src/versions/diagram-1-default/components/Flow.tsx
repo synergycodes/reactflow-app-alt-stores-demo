@@ -4,8 +4,8 @@ import { ConnectionMakerProvider } from "../features/connectionMaker/provider";
 import { DragAndDropProvider } from "../features/dragAndDrop/provider";
 
 import Diagram from "./Diagram";
-import Palette from "./Palette";
 import NodeTools from "./NodeTools";
+import Palette from "../features/dragAndDrop/components/Palette";
 
 const Flow = () => (
   <ReactFlowProvider>
