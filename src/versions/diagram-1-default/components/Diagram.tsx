@@ -12,7 +12,7 @@ import { useCallback } from "react";
 import { nodeTypes } from "@/components/nodes";
 import { initialEdges, initialNodes } from "@/consts/init";
 import RerenderCounter from "@/components/dev/RerenderCounter";
-import { useOnDragEvents } from "../hooks/useOnDragEvents";
+import { useOnDragEvents } from "../features/dragAndDrop/hooks/useOnDragEvents";
 
 export const Diagram = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node>(initialNodes);

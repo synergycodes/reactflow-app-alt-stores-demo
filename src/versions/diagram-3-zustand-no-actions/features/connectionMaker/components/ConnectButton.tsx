@@ -1,8 +1,12 @@
+import Button from "@/components/ui/Button";
+import { useCallback } from "react";
+import { type Edge } from "@xyflow/react";
+
 import { useGetSelectedNodeId } from "@/components/hooks/useGetSelectedNodeId";
 import IconEdgeStart from "@/components/icons/IconEdgeStart";
-import Button from "@/components/ui/Button";
-import { useConnectionMarkerContext } from "../hooks/useConnectionMarkerContext";
 import IconEdgeEnd from "@/components/icons/IconEdgeEnd";
+import useGlobalStore from "../../../stores/useGlobalStore";
+import useConnectionMakerStore from "../stores/useConnectionMakerStore";
 
 type Props = {
   className?: string;
@@ -10,17 +14,32 @@ type Props = {
 
 const ConnectButton = ({ className }: Props) => {
   const selectedNodeId = useGetSelectedNodeId();
-  const {
-    status,
-    cancelLinking,
-    sourceNodeId,
-    setSourceNodeId,
-    connectWithNode,
-  } = useConnectionMarkerContext();
+  const onConnect = useGlobalStore((state) => state.onConnect);
+  const status = useConnectionMakerStore((state) => state.status);
+  const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
+  const cancelLinking = useConnectionMakerStore((state) => state.cancelLinking);
+  const setSourceNodeId = useConnectionMakerStore(
+    (state) => state.setSourceNodeId
+  );
 
-  if (!selectedNodeId && !sourceNodeId) {
-    return null;
-  }
+  const connectWithNode = useCallback(
+    (targetNodeId: string) => {
+      const sourceNodeId = useConnectionMakerStore.getState().sourceNodeId;
+
+      if (sourceNodeId && targetNodeId) {
+        const newEdge: Edge = {
+          id: crypto.randomUUID(),
+          source: sourceNodeId,
+          target: targetNodeId,
+        };
+
+        onConnect(newEdge);
+
+        setSourceNodeId(null);
+      }
+    },
+    [onConnect, setSourceNodeId]
+  );
 
   if (status === "setSource") {
     return (

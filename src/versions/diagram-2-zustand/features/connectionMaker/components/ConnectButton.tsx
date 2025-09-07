@@ -15,7 +15,7 @@ const ConnectButton = ({ className }: Props) => {
     cancelLinking,
     sourceNodeId,
     setSourceNodeId,
-    setTargetNodeId,
+    connectWithNode,
   } = useConnectionMarkerContext();
 
   if (!selectedNodeId && !sourceNodeId) {
@@ -41,16 +41,20 @@ const ConnectButton = ({ className }: Props) => {
       return (
         <Button
           className={className}
-          onClick={() => setTargetNodeId(selectedNodeId)}
+          onClick={() => connectWithNode(selectedNodeId)}
         >
           <IconEdgeEnd className="size-6" />
-          <span>Link to other node</span>
+          <span>Create a connection</span>
         </Button>
       );
     }
 
     return (
-      <Button className={className} onClick={cancelLinking}>
+      <Button
+        className={className}
+        onClick={cancelLinking}
+        variant="destructive"
+      >
         <IconEdgeStart className="size-6" />
         <span>Cancel linking</span>
       </Button>

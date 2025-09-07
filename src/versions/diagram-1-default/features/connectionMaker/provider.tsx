@@ -62,7 +62,7 @@ export const ConnectionMakerProvider = ({ children }: PropsWithChildren) => {
         sourceNodeId,
         cancelLinking,
         setSourceNodeId: handleSetSourceNodeId,
-        setTargetNodeId: handleSetTargetNodeId,
+        connectWithNode: handleSetTargetNodeId,
       }}
     >
       {children}

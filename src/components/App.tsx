@@ -4,7 +4,8 @@ import { cn } from "@/utils/cn";
 
 import Flow1 from "@/versions/diagram-1-default/components/Flow";
 import Flow2 from "@/versions/diagram-2-zustand/components/Flow";
-import Flow3 from "@/versions/diagram-3-zustand-actions/components/Flow";
+import Flow3 from "@/versions/diagram-3-zustand-no-actions/components/Flow";
+import Flow4 from "@/versions/diagram-4-zustand-actions/components/Flow";
 
 import IconVersions from "./icons/IconVersions";
 
@@ -13,10 +14,11 @@ function App() {
     <Switch>
       <Route path="/diagram-1-default" component={Flow1} />
       <Route path="/diagram-2-zustand" component={Flow2} />
-      <Route path="/diagram-3-zustand-actions" component={Flow3} />
+      <Route path="/diagram-3-zustand-no-actions" component={Flow3} />
+      <Route path="/diagram-4-zustand-actions" component={Flow4} />
       <Route>
         <div className="h-screen flex flex-col justify-center">
-          <main className="text-center w-[300px] mx-auto max-w-screen">
+          <main className="text-center w-[500px] mx-auto max-w-screen">
             <h1
               className={cn(
                 "flex items-center gap-2",
@@ -30,14 +32,34 @@ function App() {
               <ul>
                 <li>
                   <Link href="/diagram-1-default">1. Default</Link>
+                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation without an external store,
+                    with drag-and-drop and custom edge creation implemented.
+                  </p>
                 </li>
                 <li>
                   <Link href="/diagram-2-zustand">2. Zustand store</Link>
+                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation with one external store.
+                  </p>
                 </li>
                 <li>
-                  <Link href="/diagram-3-zustand-actions">
-                    3. Zustand store with actions
+                  <Link href="/diagram-3-zustand-no-actions">
+                    3. Zustand store without actions
                   </Link>
+                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation with multiple external
+                    stores and zustand actions.
+                  </p>
+                </li>
+                <li>
+                  <Link href="/diagram-4-zustand-actions">
+                    4. Zustand store with actions
+                  </Link>
+                  <p className="leading-7 text-sm text-zinc-500 px-10 py-5">
+                    Standard ReactFlow implementation with multiple external
+                    stores and zustand actions.
+                  </p>
                 </li>
               </ul>
             </nav>

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useReactFlow } from "@xyflow/react";
-import { addNodeOnDropIfDragged } from "../features/dragAndDrop/stores/useDragAndDropStore";
+import { addNodeOnDropIfDragged } from "../stores/useDragAndDropStore";
 
 export const useOnDragEvents = () => {
   const { screenToFlowPosition } = useReactFlow();

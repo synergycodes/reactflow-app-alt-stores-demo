@@ -9,7 +9,8 @@ type Props = {
 const itemClassName = cn(
   "absolute top-1/2 left-1/2 -z-1",
   "-translate-x-1/2 -translate-y-1/2",
-  "text-[6px] tracking-widest text-green-800",
+  "text-[6px] tracking-widest leading-none text-green-800",
+  "text-shadow-md text-shadow-white font-semibold",
   "duration-300 ease-in-out"
 );
 
@@ -28,7 +29,7 @@ const items = [
 ];
 
 const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
-  const { indexesToHide, largerIndex } = useMemo(() => {
+  const { indexesToHide, smallerIndex, largerIndex } = useMemo(() => {
     return {
       indexesToHide: [
         Math.floor(Math.random() * items.length),
@@ -37,6 +38,7 @@ const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
         Math.floor(Math.random() * items.length),
         Math.floor(Math.random() * items.length),
       ],
+      smallerIndex: Math.floor(Math.random() * items.length),
       largerIndex: Math.floor(Math.random() * items.length),
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,10 +50,14 @@ const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
 
   return (
     <div
-      className={cn("duration-800 delay-300 ease-in-out pointer-events-none", {
-        "opacity-0": selected,
-        "opacity-100": !selected,
-      })}
+      className={cn(
+        "duration-500 delay-200 ease-in pointer-events-none",
+        {
+          "opacity-0": selected,
+          "opacity-100": !selected,
+        },
+        "font-comic"
+      )}
     >
       {items.map((item, index) => (
         <span
@@ -61,7 +67,8 @@ const NodeExplosion = ({ children, selected }: PropsWithChildren<Props>) => {
             [itemClassNameSelected]: selected,
             [item]: selected,
             "!opacity-0": indexesToHide.includes(index),
-            "text-[13px] text-lime-500": largerIndex === index,
+            "text-[5px] text-black": smallerIndex === index,
+            "text-[11px] text-rose-500": largerIndex === index,
           })}
           style={{
             transitionDelay: `${index * 30}ms`,

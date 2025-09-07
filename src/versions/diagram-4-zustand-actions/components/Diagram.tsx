@@ -8,7 +8,7 @@ import useGlobalStore, {
   onNodesChange,
   type GlobalStoreState,
 } from "../stores/useGlobalStore";
-import { useOnDragEvents } from "../hooks/useOnDragEvents";
+import { useOnDragEvents } from "../features/dragAndDrop/hooks/useOnDragEvents";
 
 const selector = (state: GlobalStoreState) => ({
   nodes: state.nodes,
