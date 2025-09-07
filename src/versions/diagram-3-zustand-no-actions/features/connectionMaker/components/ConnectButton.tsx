@@ -1,26 +1,32 @@
-import Button from "@/components/ui/Button";
 import { useCallback } from "react";
+import { useShallow } from "zustand/shallow";
 import { type Edge } from "@xyflow/react";
 
+import Button from "@/components/ui/Button";
 import { useGetSelectedNodeId } from "@/components/hooks/useGetSelectedNodeId";
 import IconEdgeStart from "@/components/icons/IconEdgeStart";
 import IconEdgeEnd from "@/components/icons/IconEdgeEnd";
 import useGlobalStore from "../../../stores/useGlobalStore";
-import useConnectionMakerStore from "../stores/useConnectionMakerStore";
+import useConnectionMakerStore, {
+  type ConnectionMakerStoreState,
+} from "../stores/useConnectionMakerStore";
 
 type Props = {
   className?: string;
 };
 
+const selector = (state: ConnectionMakerStoreState) => ({
+  status: state.status,
+  sourceNodeId: state.sourceNodeId,
+  setSourceNodeId: state.setSourceNodeId,
+  cancelLinking: state.cancelLinking,
+});
+
 const ConnectButton = ({ className }: Props) => {
   const selectedNodeId = useGetSelectedNodeId();
   const onConnect = useGlobalStore((state) => state.onConnect);
-  const status = useConnectionMakerStore((state) => state.status);
-  const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
-  const cancelLinking = useConnectionMakerStore((state) => state.cancelLinking);
-  const setSourceNodeId = useConnectionMakerStore(
-    (state) => state.setSourceNodeId
-  );
+  const { status, sourceNodeId, setSourceNodeId, cancelLinking } =
+    useConnectionMakerStore(useShallow(selector));
 
   const connectWithNode = useCallback(
     (targetNodeId: string) => {
