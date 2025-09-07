@@ -1,15 +1,12 @@
 import Button from "@/components/ui/Button";
-import { useCallback, useMemo } from "react";
-import { addEdge, useReactFlow, type Edge } from "@xyflow/react";
+import { useCallback } from "react";
+import { type Edge } from "@xyflow/react";
 
 import { useGetSelectedNodeId } from "@/components/hooks/useGetSelectedNodeId";
 import IconEdgeStart from "@/components/icons/IconEdgeStart";
 import IconEdgeEnd from "@/components/icons/IconEdgeEnd";
-import useConnectionMakerStore, {
-  cancelLinking,
-  setSourceNodeId,
-  setTargetNodeId,
-} from "../stores/useConnectionMakerStore";
+import useGlobalStore from "../../../stores/useGlobalStore";
+import useConnectionMakerStore from "../stores/useConnectionMakerStore";
 
 type Props = {
   className?: string;
@@ -17,8 +14,32 @@ type Props = {
 
 const ConnectButton = ({ className }: Props) => {
   const selectedNodeId = useGetSelectedNodeId();
+  const onConnect = useGlobalStore((state) => state.onConnect);
   const status = useConnectionMakerStore((state) => state.status);
   const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
+  const cancelLinking = useConnectionMakerStore((state) => state.cancelLinking);
+  const setSourceNodeId = useConnectionMakerStore(
+    (state) => state.setSourceNodeId
+  );
+
+  const connectWithNode = useCallback(
+    (targetNodeId: string) => {
+      const sourceNodeId = useConnectionMakerStore.getState().sourceNodeId;
+
+      if (sourceNodeId && targetNodeId) {
+        const newEdge: Edge = {
+          id: crypto.randomUUID(),
+          source: sourceNodeId,
+          target: targetNodeId,
+        };
+
+        onConnect(newEdge);
+
+        setSourceNodeId(null);
+      }
+    },
+    [onConnect, setSourceNodeId]
+  );
 
   if (status === "setSource") {
     return (
@@ -39,7 +60,7 @@ const ConnectButton = ({ className }: Props) => {
       return (
         <Button
           className={className}
-          onClick={() => setTargetNodeId(selectedNodeId)}
+          onClick={() => connectWithNode(selectedNodeId)}
         >
           <IconEdgeEnd className="size-6" />
           <span>Create a connection</span>

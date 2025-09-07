@@ -8,7 +8,7 @@ import IconEdgeEnd from "@/components/icons/IconEdgeEnd";
 import useConnectionMakerStore, {
   cancelLinking,
   setSourceNodeId,
-  setTargetNodeId,
+  connectWithNode,
 } from "../stores/useConnectionMakerStore";
 
 type Props = {
@@ -39,7 +39,7 @@ const ConnectButton = ({ className }: Props) => {
       return (
         <Button
           className={className}
-          onClick={() => setTargetNodeId(selectedNodeId)}
+          onClick={() => connectWithNode(selectedNodeId)}
         >
           <IconEdgeEnd className="size-6" />
           <span>Create a connection</span>

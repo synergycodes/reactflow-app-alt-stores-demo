@@ -1,18 +1,13 @@
 import { useCallback } from "react";
 import { useReactFlow, type Node } from "@xyflow/react";
 import { generateId } from "@/utils/generateId";
-import { useShallow } from "zustand/shallow";
-import useGlobalStore, {
-  type GlobalStoreState,
-} from "../stores/useGlobalStore";
-import { useDragAndDropContext } from "../features/dragAndDrop/hooks/useDragAndDropContext";
+import { useDragAndDropContext } from "./useDragAndDropContext";
 
-const selector = (state: GlobalStoreState) => ({
-  addNode: state.addNode,
-});
+type Params = {
+  setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
+};
 
-export const useOnDragEvents = () => {
-  const { addNode } = useGlobalStore(useShallow(selector));
+export const useOnDragEvents = ({ setNodes }: Params) => {
   const { screenToFlowPosition } = useReactFlow();
   const { draggedType, setDraggedType } = useDragAndDropContext();
 
@@ -43,9 +38,9 @@ export const useOnDragEvents = () => {
 
       setDraggedType(null);
 
-      addNode(newNode);
+      setNodes((nds) => nds.concat(newNode));
     },
-    [draggedType, screenToFlowPosition, setDraggedType, addNode]
+    [draggedType, screenToFlowPosition, setDraggedType, setNodes]
   );
 
   return {

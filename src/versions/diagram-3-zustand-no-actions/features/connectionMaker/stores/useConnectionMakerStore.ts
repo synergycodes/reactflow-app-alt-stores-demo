@@ -1,53 +1,40 @@
-import type { Edge } from "@xyflow/react";
 import { create } from "zustand";
-import { onConnect } from "@/versions/diagram-4-zustand-actions/stores/useGlobalStore";
 import type { ConnectionMakerStatus } from "../types";
 
 export type ConnectionMakerStoreState = {
   status: ConnectionMakerStatus;
   sourceNodeId: string | null;
+  cancelLinking: () => void;
+  setSourceNodeId: (sourceNodeId: string | null) => void;
 };
 
-const initialState: ConnectionMakerStoreState = {
-  status: "setSource",
-  sourceNodeId: null,
-};
+const initialState: Pick<ConnectionMakerStoreState, "status" | "sourceNodeId"> =
+  {
+    status: "setSource",
+    sourceNodeId: null,
+  };
 
 const useConnectionMakerStore = create<ConnectionMakerStoreState>(
-  () => initialState
+  (set, get) => ({
+    ...initialState,
+    cancelLinking: () => {
+      set({
+        ...initialState,
+      });
+    },
+    setSourceNodeId: (sourceNodeId) => {
+      if (!sourceNodeId) {
+        get().cancelLinking();
+
+        return;
+      }
+
+      set({
+        status: "setTarget",
+        sourceNodeId,
+      });
+    },
+  })
 );
-
-export const cancelLinking = () => {
-  useConnectionMakerStore.setState(initialState);
-};
-
-export const setSourceNodeId = (sourceNodeId: string | null) => {
-  if (!sourceNodeId) {
-    cancelLinking();
-
-    return;
-  }
-
-  useConnectionMakerStore.setState({
-    status: "setTarget",
-    sourceNodeId,
-  });
-};
-
-export const setTargetNodeId = (targetNodeId: string | null) => {
-  const sourceNodeId = useConnectionMakerStore.getState().sourceNodeId;
-
-  if (sourceNodeId && targetNodeId) {
-    const newEdge: Edge = {
-      id: crypto.randomUUID(),
-      source: sourceNodeId,
-      target: targetNodeId,
-    };
-
-    onConnect(newEdge);
-
-    setSourceNodeId(null);
-  }
-};
 
 export default useConnectionMakerStore;

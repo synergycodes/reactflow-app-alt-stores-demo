@@ -1,19 +1,22 @@
+import { useCallback } from "react";
 import { Link } from "wouter";
 import type { SupportedNodeTypes } from "@ts";
 import { cn } from "@/utils/cn";
 import { PALETTE_NODES_TYPES } from "@/consts/init";
 import IconByNodeType from "@/components/icons/IconByNodeType";
 import IconVersions from "@/components/icons/IconVersions";
-import { setDraggedType } from "../features/dragAndDrop/stores/useDragAndDropStore";
+import useDragAndDropStore from "../features/dragAndDrop/stores/useDragAndDropStore";
 
 const Palette = () => {
-  const onDragStart = (
-    event: React.DragEvent<HTMLDivElement>,
-    nodeType: SupportedNodeTypes
-  ) => {
-    setDraggedType(nodeType);
-    event.dataTransfer.effectAllowed = "move";
-  };
+  const setDraggedType = useDragAndDropStore((state) => state.setDraggedType);
+
+  const onDragStart = useCallback(
+    (event: React.DragEvent<HTMLDivElement>, nodeType: SupportedNodeTypes) => {
+      setDraggedType(nodeType);
+      event.dataTransfer.effectAllowed = "move";
+    },
+    [setDraggedType]
+  );
 
   return (
     <aside className="fixed left-0 top-0 z-10">

@@ -34,7 +34,7 @@ export const setSourceNodeId = (sourceNodeId: string | null) => {
   });
 };
 
-export const setTargetNodeId = (targetNodeId: string | null) => {
+export const connectWithNode = (targetNodeId: string) => {
   const sourceNodeId = useConnectionMakerStore.getState().sourceNodeId;
 
   if (sourceNodeId && targetNodeId) {

@@ -6,11 +6,11 @@ export const ConnectionMakerContext = createContext<{
   sourceNodeId: string | null;
   cancelLinking: () => void;
   setSourceNodeId: (type: string | null) => void;
-  setTargetNodeId: (type: string | null) => void;
+  connectWithNode: (type: string) => void;
 }>({
   status: "setSource",
   sourceNodeId: null,
   cancelLinking: () => {},
   setSourceNodeId: () => {},
-  setTargetNodeId: () => {},
+  connectWithNode: () => {},
 });
