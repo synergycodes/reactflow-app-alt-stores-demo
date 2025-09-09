@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn";
 
 import Flow1 from "@/versions/diagram-1-default/components/Flow";
 import Flow2 from "@/versions/diagram-2-zustand-and-context/components/Flow";
-import Flow3 from "@/versions/diagram-3-zustand-no-actions/components/Flow";
+import Flow3 from "@/versions/diagram-3-zustand-store-actions/components/Flow";
 import Flow4 from "@/versions/diagram-4-zustand-actions/components/Flow";
 
 import IconVersions from "./icons/IconVersions";
@@ -26,7 +26,7 @@ function App() {
     <Switch>
       <Route path="/1-default" component={Flow1} />
       <Route path="/2-zustand-and-context" component={Flow2} />
-      <Route path="/3-zustand-no-actions" component={Flow3} />
+      <Route path="/3-zustand-store-actions" component={Flow3} />
       <Route path="/4-zustand-actions" component={Flow4} />
       <Route>
         <div className="h-screen flex flex-col justify-center">
@@ -75,10 +75,10 @@ function App() {
                 </li>
                 <li className="border border-zinc-400 rounded-lg p-5">
                   <Link
-                    href="/3-zustand-no-actions"
+                    href="/3-zustand-store-actions"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    3. Zustand stores
+                    3. Zustand stores with actions
                   </Link>
                   <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     ReactFlow implementation{" "}
@@ -94,7 +94,7 @@ function App() {
                     href="/4-zustand-actions"
                     className="font-semibold text-zinc-900 hover:text-lime-700 duration-100 tracking-wider"
                   >
-                    4. Zustand stores with actions
+                    4. Zustand stores without actions
                   </Link>
                   <p className="leading-6 text-xs text-zinc-500 mt-3 pl-3">
                     ReactFlow implementation{" "}
