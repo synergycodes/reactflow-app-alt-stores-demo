@@ -47,6 +47,10 @@ const ConnectButton = ({ className }: Props) => {
     [onConnect, setSourceNodeId]
   );
 
+  if (!selectedNodeId && !sourceNodeId) {
+    return null;
+  }
+
   if (status === "setSource") {
     return (
       <Button

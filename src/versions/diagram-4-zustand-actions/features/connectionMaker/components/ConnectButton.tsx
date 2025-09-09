@@ -18,6 +18,10 @@ const ConnectButton = ({ className }: Props) => {
   const status = useConnectionMakerStore((state) => state.status);
   const sourceNodeId = useConnectionMakerStore((state) => state.sourceNodeId);
 
+  if (!selectedNodeId && !sourceNodeId) {
+    return null;
+  }
+
   if (status === "setSource") {
     return (
       <Button

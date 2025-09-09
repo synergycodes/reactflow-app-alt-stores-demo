@@ -11,16 +11,22 @@ import {
 } from "@xyflow/react";
 
 import { initialEdges, initialNodes } from "@/consts/init";
+import { devtools, persist } from "zustand/middleware";
 
 export type GlobalStoreState = {
   nodes: Node[];
   edges: Edge[];
 };
 
-const useGlobalStore = create<GlobalStoreState>(() => ({
-  nodes: initialNodes,
-  edges: initialEdges,
-}));
+const useGlobalStore = create<GlobalStoreState>()(
+  persist(
+    () => ({
+      nodes: initialNodes,
+      edges: initialEdges,
+    }),
+    { name: "globalStore" }
+  )
+);
 
 export const onNodesChange = (changes: NodeChange<Node>[]) => {
   useGlobalStore.setState((state) => ({
