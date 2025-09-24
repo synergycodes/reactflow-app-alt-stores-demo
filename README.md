@@ -12,11 +12,9 @@ https://zustand.docs.pmnd.rs/guides/practice-with-no-store-actions
 
 ### Check our other profiles
 
-https://www.synergycodes.com/
-
-https://www.linkedin.com/company/synergy-codes
-
-https://www.instagram.com/synergycodes/
+- https://www.synergycodes.com/
+- https://www.linkedin.com/company/synergy-codes
+- https://www.instagram.com/synergycodes/
 
 
 
