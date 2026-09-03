@@ -4,6 +4,9 @@ This demo application showcases a better way to manage state in React Flow using
 
 Watch the walkthrough here: **[🟥 YouTube](https://www.youtube.com/watch?v=41FsulrcrQg)**
 
+The application:
+https://synergycodes.github.io/reactflow-app-alt-stores-demo/
+
 More videos from **Synergy Codes**:
 https://www.youtube.com/@synergycodes
 
