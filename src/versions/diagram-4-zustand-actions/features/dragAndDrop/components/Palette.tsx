@@ -49,7 +49,7 @@ const Palette = () => {
           </div>
         ))}
         <Link
-          to="/"
+          to="/reactflow-app-alt-stores-demo/"
           className={cn(
             "mt-5",
             "inline-flex gap-1 justify-center items-center",

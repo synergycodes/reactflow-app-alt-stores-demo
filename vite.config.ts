@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+    base: '/reactflow-app-alt-stores-demo/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
